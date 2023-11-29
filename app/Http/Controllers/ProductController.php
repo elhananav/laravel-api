@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductCollection;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -15,8 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return new ProductCollection(Product::paginate());
-        
+        return new ProductCollection(Product::all());
     }
 
     /**
@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        return new ProductResource(Product::create($request->all()));
     }
 
     /**
@@ -56,7 +56,8 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return response()->json(['message' => 'Product updated successfully'], 200);
     }
 
     /**
@@ -64,6 +65,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json(['message' => 'Product deleted successfully'], 200);
     }
 }

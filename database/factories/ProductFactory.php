@@ -18,7 +18,9 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'type' => $this->faker->name()
+            'type' => $this->faker->name(),
+            'price' => $this->faker->randomFloat(2, 10, 100),
+            'description' => $this->faker->sentence()
         ];
     }
 }

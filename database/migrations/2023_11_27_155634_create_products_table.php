@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
+            $table->decimal('price', 8, 2);
+            $table->text('description')->nullable();
+            $table->boolean('is_in_stock')->default(true);
             $table->timestamps();
         });
     }
