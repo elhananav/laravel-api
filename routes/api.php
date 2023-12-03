@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiresource('product', ProductController::class);
+Route::get('/product/search/{name}', [ProductController::class, 'searchByName']);

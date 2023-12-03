@@ -16,15 +16,13 @@ class ProductController extends Controller
      */
     public function index()
     {
+       
         return new ProductCollection(Product::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function searchByName($name) {
+        $products = Product::where('name', 'like', '%' . $name . '%')->get();
+        return new ProductCollection(ProductResource::collection($products));
     }
 
     /**
