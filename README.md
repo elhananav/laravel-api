@@ -8,7 +8,7 @@ create new datsbase in MySQL server named: laravel_api
 
 run the MySQL server
 
-    all of this actions can be achived using XAMPP
+this actions can be achived using XAMPP
 
 ## Installation
 
